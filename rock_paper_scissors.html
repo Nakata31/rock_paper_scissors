@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rock, Paper, Scissors</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		let words = ["Rock", "Paper", "Scissors"];
+
+		function getPlayer() {
+			let userInput = prompt("Elige tu arma!")
+			userInput = userInput.toLowerCase();
+			if (userInput == "rock" || userInput == "scissors" || userInput == "paper") {
+				return userInput;
+			} else {
+				alert("Nope, tienes que elegir rock, paper o scissors");
+			}
+		}
+
+		function getComputerPlay(words) {
+			let finalWord = words[Math.floor(Math.random() * 3)];
+			return finalWord;
+		}		
+
+
+		function winner(player, computerPlay) {
+			if (player == computerPlay) {
+				return "Empate!"
+			}
+			if (player == "rock") {
+				if (computerPlay == "scissors") {
+					return "Has ganado";
+				} else {
+					return "Has perdido";
+				}
+			} 
+			if (player == "paper") {
+				if (computerPlay == "scissors") {
+					return "Has perdido";
+				} else {
+					return "Has ganado";
+				}
+			} 
+			if (player == "rock") {
+				if (computerPlay == "paper") {
+					return "Has perdido";
+				} else {
+					return "Has ganado";
+				}
+			} 
+		}
+
+		funcion game() {
+			let player = getPlayer();
+			let computerPlay = getComputerPlay(words);
+			alert("Tu elegiste:" + player);
+			alert("La maquina elegio:" + computerPlay);
+
+			alert(winner(player, computerPlay));
+		}
+		
+		game();
+
+
+	</script>
+
+</body>
+</html>

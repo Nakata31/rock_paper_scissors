@@ -8,17 +8,45 @@
 
 	<script type="text/javascript">
 		
-		let words = ["Rock", "Paper", "Scissors"];
+		let choices = ["Rock", "Paper", "Scissors"];
+		let playerSelection = prompt ("Elige tu arma");
 
 		//FUNCIONA
 		
-		function getComputerPlay(words) {
-			let finalWord = words[Math.floor(Math.random() * 3)];
-			return finalWord;
+		function ComputerPlay(choices) {
+			let finalChoice = choices[Math.floor(Math.random() * 3)];
+			return finalChoice;
 		}		
 
-		console.log(getComputerPlay(words));
+		//console.log(ComputerPlay(choices));
 
+		function playRound(playerSelection, computerSelection) {
+
+			if (computerSelection == playerSelection) {
+				return "Ohhhh, hay empate!";
+		    } 
+
+		    if (computerSelection == "Rock" && playerSelection == "Scissors") {
+				return "Has perdido";
+			} else {
+				return "Has ganado";
+			}
+
+			if (computerSelection == "Paper" && playerSelection == "Scissors") {
+				return "Has perdido";
+			} else {
+				return "Has ganado";
+			}
+
+			if (computerSelection == "Rock" && playerSelection == "Paper") {
+				return "Has ganado";
+			} else {
+				return "Has perdido";
+			}
+		}
+
+		const computerSelection = ComputerPlay(choices);
+		console.log(playRound(playerSelection, computerSelection));
 
 
 	</script>

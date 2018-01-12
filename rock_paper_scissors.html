@@ -20,30 +20,46 @@
 
 		//console.log(ComputerPlay(choices));
 
+		//DUDAS, PERO PARECE FUNCIONAR
+
 		function playRound(playerSelection, computerSelection) {
 
-			if (computerSelection == playerSelection) {
-				return "Ohhhh, hay empate!";
-		    } 
+			
+			if (playerSelection == "Rock") {
+        		if (computerSelection == "Scissors") {
+            		return "Rock gana, has ganado!";
+        		} else if (computerSelection == "Paper") {
+            	return "Paper gana, has perdido!";
+        	} else {
+            	return "Ohhh, hay empate!";
+        		}	
+    		}
 
-		    if (computerSelection == "Rock" && playerSelection == "Scissors") {
-				return "Has perdido";
-			} else {
-				return "Has ganado";
-			}
+    		if (playerSelection == "Paper") {
+        		if (computerSelection == "Rock") {
+            		return "Paper gana, has ganado!";
+        		} else if (computerSelection == "Scissors") {
+            		return "Scissors gana, has perdido!";
+        	} else {
+            	return "Ohhh, hay empate!";
+        	}
+   			}
 
-			if (computerSelection == "Paper" && playerSelection == "Scissors") {
-				return "Has perdido";
-			} else {
-				return "Has ganado";
-			}
+    		if (playerSelection == "Scissors") {
+        		if (computerSelection == "Paper") {
+            		return "Scissors gana, has ganado!";
+        		} else if (computerSelection == "Rock") {
+            		return "Rock gana, has perdido!";
+        	} else {
+            	return "Ohhh, hay empate!";
+        	}
+    		}
 
-			if (computerSelection == "Rock" && playerSelection == "Paper") {
-				return "Has ganado";
-			} else {
-				return "Has perdido";
-			}
+    		if (playerSelection !== "Paper" || playerSelection !== "Rock" || playerSelection !== "Scissors") {
+    			return "No sabes jugar a esto? Solo puedes escribir Rock, Paper o Scissors";
+    		}
 		}
+
 
 		const computerSelection = ComputerPlay(choices);
 		console.log(playRound(playerSelection, computerSelection));

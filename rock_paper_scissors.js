@@ -13,15 +13,15 @@
 	function playRound(playerSelection, computerSelection) {
 		playerSelection = playerSelection.toLowerCase();
 
-		if (playerSelection == computerSelection) {return "Tie"}
+		if (playerSelection == computerSelection) {return "Tie" && alert("Tie")}
 
 		switch (playerSelection) {
 			case "paper":
-				return (computerSelection == "scissors") ? "Loss" && computerScore++ : "Win" && playerScore++;
+				return (computerSelection == "scissors") ? alert("Loss") && computerScore++ : alert("Win") && playerScore++;
 			case "rock":
-				return (computerSelection == "paper") ? "Loss" && computerScore++ : "Win" && playerScore++;
+				return (computerSelection == "paper") ? alert("Loss") && computerScore++ : alert("Win") && playerScore++;
 			default:
-				return (computerSelection == "rock") ? "Loss" && computerScore++ : "Win" && playerScore++;
+				return (computerSelection == "rock") ? alert("Loss") && computerScore++ : alert("Win") && playerScore++;
 		}
 	
 	}

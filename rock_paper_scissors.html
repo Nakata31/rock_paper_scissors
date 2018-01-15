@@ -2,70 +2,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Rock, Paper, Scissors</title>
+	<title>Rock, paper, scissors</title>
 </head>
 <body>
 
-	<script type="text/javascript">
-		
-		let choices = ["Rock", "Paper", "Scissors"];
-		let playerSelection = prompt ("Elige tu arma");
+<button onclick = "game()">Play</button>
 
-		//FUNCIONA
-		
-		function ComputerPlay(choices) {
-			let finalChoice = choices[Math.floor(Math.random() * 3)];
-			return finalChoice;
-		}		
-
-		//console.log(ComputerPlay(choices));
-
-		//DUDAS, PERO PARECE FUNCIONAR
-
-		function playRound(playerSelection, computerSelection) {
-
-			
-			if (playerSelection == "Rock") {
-        		if (computerSelection == "Scissors") {
-            		return "Rock gana, has ganado!";
-        		} else if (computerSelection == "Paper") {
-            	return "Paper gana, has perdido!";
-        	} else {
-            	return "Ohhh, hay empate!";
-        		}	
-    		}
-
-    		if (playerSelection == "Paper") {
-        		if (computerSelection == "Rock") {
-            		return "Paper gana, has ganado!";
-        		} else if (computerSelection == "Scissors") {
-            		return "Scissors gana, has perdido!";
-        	} else {
-            	return "Ohhh, hay empate!";
-        	}
-   			}
-
-    		if (playerSelection == "Scissors") {
-        		if (computerSelection == "Paper") {
-            		return "Scissors gana, has ganado!";
-        		} else if (computerSelection == "Rock") {
-            		return "Rock gana, has perdido!";
-        	} else {
-            	return "Ohhh, hay empate!";
-        	}
-    		}
-
-    		if (playerSelection !== "Paper" || playerSelection !== "Rock" || playerSelection !== "Scissors") {
-    			return "No sabes jugar a esto? Solo puedes escribir Rock, Paper o Scissors";
-    		}
-		}
-
-
-		const computerSelection = ComputerPlay(choices);
-		console.log(playRound(playerSelection, computerSelection));
-
-
-	</script>
-
+<script type="text/javascript" src="rock_paper_scissors.js"></script>
 </body>
 </html>

@@ -3,7 +3,8 @@
 	let choices = ["rock", "paper", "scissors"];
 	let playerScore = 0;
 	let computerScore = 0;
-
+	const buttons = document.querySelectorAll("button");
+	
 	//COMPUTER RANDOM CHOICE
 
 	function computerPlay(choices) {
@@ -14,41 +15,62 @@
 	//ONE ROUND
 
 	function playRound(playerSelection, computerSelection) {
-		playerSelection = playerSelection.toLowerCase();
+		
+		if (playerSelection === "rock"){
+           
+           if (computerSelection === "rock"){
+                return "draw";
+           }
+           else if (computerSelection === "paper"){
+                return "lose";
+           }
+           else {
+                return "win";
+           }
+		}
 
-		if (playerSelection == computerSelection) {return "Ohhhhh its a tie!" && alert("Ohhh its a tie!")}
+		if (playerSelection === "paper"){
+           
+           if (computerSelection === "paper"){
+                return "draw";
+           }
+           else if (computerSelection === "scissors"){
+                return "lose";
+           }
+           else {
+                return "win";
+           }
+		}
 
-		switch (playerSelection) {
-			case "paper":
-				return (computerSelection == "scissors") ? "Machine selects scissors, you lose!" && computerScore++ && alert("Machine selects scissors, you lose!") : "Machine selects rock, you win!" && playerScore++ && alert("Machine selects rock, you win!")
-				break;
-			case "rock":
-				return (computerSelection == "paper") ? "Machine selects paper, you lose!" && computerScore++ && alert("Machine selects paper, you lose!") : "Machine selects scissors, you win!" && playerScore++ && alert("Machine selects scissors, you win!")
-				break;
-			default:
-				return (computerSelection == "rock") ? "Machine selects rock, you lose!" && computerScore++ && alert("Machine selects rock, you lose!") : "Machine selects paper, you win!" && playerScore++ && alert("Machine selects paper, you win!")
+		if (playerSelection === "scissors"){
+           
+           if (computerSelection === "scissors"){
+                return "draw";
+           }
+           else if (computerSelection === "rock"){
+                return "lose";
+           }
+           else {
+                return "win";
+           }
 		}
 	
 	}
 
-	//GAME BEST OF FIVE
 
-	function game() {
-		for(let i = 0; i < 5; i++) {
-			let playerSelection = prompt("Rock, paper or scissors?");
-		
-		let computerSelection = computerPlay(choices);
-		playRound(playerSelection, computerSelection);
+	buttons.forEach((button) => {
+		buttons.addEventListener("click", function() {
+			let computerSelection = computerPlay(choices);
+			let playerSelection = button.id;
+			let result = "";
 
-		}
+			result = playRound(playerSelection, computerSelection);
+			console.log(playerSelection);
+			console.log(computerSelection);
+	})}
 
-		if (playerScore > computerScore) {
-			alert("You win the game! Congratulations!");
-		} else if (playerScore === computerScore) {
-			alert("Ohhh its a draw! Well played!");
-		} else {
-			alert("The machine is too much for you!");
-		}
-		
-	} 
+
+	console.log(playRound(playerSelection, computerSelection));
+	
+
 	

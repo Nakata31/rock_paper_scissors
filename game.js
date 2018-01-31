@@ -3,7 +3,7 @@
 	let choices = ["rock", "paper", "scissors"];
 	let playerScore = 0;
 	let computerScore = 0;
-	const buttons = document.querySelectorAll("button");
+	let result = "";
 	
 	//COMPUTER RANDOM CHOICE
 
@@ -19,58 +19,82 @@
 		if (playerSelection === "rock"){
            
            if (computerSelection === "rock"){
-                return "draw";
+                result = "draw";
+
            }
            else if (computerSelection === "paper"){
-                return "lose";
+                computerScore++;
+                result = "lose";
            }
            else {
-                return "win";
+                playerScore++;
+                result = "win";
            }
 		}
 
 		if (playerSelection === "paper"){
            
            if (computerSelection === "paper"){
-                return "draw";
+                result = "draw";
            }
            else if (computerSelection === "scissors"){
-                return "lose";
+                computerScore++;
+                result = "lose";
            }
            else {
-                return "win";
+                playerScore++;
+                result = "win";
            }
 		}
 
 		if (playerSelection === "scissors"){
            
            if (computerSelection === "scissors"){
-                return "draw";
+                result = "draw";
            }
            else if (computerSelection === "rock"){
-                return "lose";
+                computerScore++;
+                result = "lose";
            }
            else {
-                return "win";
+                playerScore++;
+                result = "win";
            }
 		}
 	
+		return result;
 	}
 
+	
 
-	buttons.forEach((button) => {
-		buttons.addEventListener("click", function() {
-			let computerSelection = computerPlay(choices);
-			let playerSelection = button.id;
-			let result = "";
-
-			result = playRound(playerSelection, computerSelection);
+		function game () {
+				
+				if (playerScore > computerScore) {
+				console.log("You win the game! Congratulations!");
+				} else if (playerScore === computerScore) {
+				console.log("Ohhh its a draw! Well played!");
+				} else {
+				console.log("The machine is too much for you!");
+				} 
+		}
+		
+	
+	window.onload = function() {
+		
+		let button = document.querySelectorAll("#rock, #paper, #scissors")
+		for (let i = 0; i < button.length; i++) {
+		button[i].addEventListener("click", function(e) {
+			let playerSelection = this.id;
 			console.log(playerSelection);
+			let computerSelection = computerPlay(choices);
 			console.log(computerSelection);
-	})}
+			playRound(playerSelection, computerSelection);
+			console.log(playRound(playerSelection, computerSelection));
+			game();
+			console.log(game());
+	})}};
 
 
-	console.log(playRound(playerSelection, computerSelection));
 	
 
 	

@@ -42,7 +42,8 @@ button {
   	padding: 10px;
 }
 
-#buttons {
+
+.buttons {
 	position: absolute;
 	margin: auto;
   	top: 0;

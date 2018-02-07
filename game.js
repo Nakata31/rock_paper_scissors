@@ -4,6 +4,8 @@
 	let playerScore = 0;
 	let computerScore = 0;
 	let result = "";
+	let rounds = 5;
+
 	
 	//COMPUTER RANDOM CHOICE
 
@@ -66,32 +68,48 @@
 	}
 
 	
+	// GAME FUNCTION
 
 		function game () {
 				
-				if (playerScore > computerScore) {
-				console.log("You win the game! Congratulations!");
-				} else if (playerScore === computerScore) {
-				console.log("Ohhh its a draw! Well played!");
-				} else {
-				console.log("The machine is too much for you!");
-				} 
+			let resultDisplay = document.querySelector("#result");
+			let finalScore = document.querySelector("#finalscore");
+			if (result === "win") {
+			resultDisplay.textContent = "Congratulations! You won this round!";
+			} else if (result === "lose") {
+			resultDisplay.textContent = "Ohhh! You lost this round!";
+			} else {
+			resultDisplay.textContent = "Its a tie";
+			} 
+
+			finalScore.textContent = "You have" + " " + playerScore + " " + "points and the machine" +
+			" " + computerScore;
+		}
+
+	// RESET GANE
+
+		function reset () {
+			let resultDisplay = document.querySelector("#result");
+			let finalScore = document.querySelector("#finalscore");
+			playerScore = 0;
+			computerScore = 0;
+			resultDisplay.innerHTML = "";
+			finalScore.innerHTML = "";
 		}
 		
 	
+	// BUTTONS CONTROL
+
 	window.onload = function() {
 		
 		let button = document.querySelectorAll("#rock, #paper, #scissors")
 		for (let i = 0; i < button.length; i++) {
 		button[i].addEventListener("click", function(e) {
 			let playerSelection = this.id;
-			console.log(playerSelection);
 			let computerSelection = computerPlay(choices);
-			console.log(computerSelection);
 			playRound(playerSelection, computerSelection);
-			console.log(playRound(playerSelection, computerSelection));
 			game();
-			console.log(game());
+			
 	})}};
 
 
